@@ -4,7 +4,7 @@
 local ecI = {}
 ecI.type = "item"
 ecI.name = "EnergyCore"
-ecI.icon = "__MF_Base__/graphics/items/EnergyCore.png"
+ecI.icon = "__MF_Base_zoms__/graphics/items/EnergyCore.png"
 ecI.icon_size = 256
 ecI.fuel_category = "chemical"
 ecI.fuel_value = "250MJ"
@@ -32,7 +32,7 @@ data:extend{ecR}
 local ecT = {}
 ecT.name = "EnergyCore"
 ecT.type = "technology"
-ecT.icon = "__MF_Base__/graphics/items/EnergyCore.png"
+ecT.icon = "__MF_Base_zoms__/graphics/items/EnergyCore.png"
 ecT.icon_size = 256
 ecT.unit = {
 	count=10,

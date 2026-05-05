@@ -4,7 +4,7 @@
 local mfI = {}
 mfI.type = "item"
 mfI.name = "MachineFrame"
-mfI.icon = "__MF_Base__/graphics/items/MachineFrame.png"
+mfI.icon = "__MF_Base_zoms__/graphics/items/MachineFrame.png"
 mfI.icon_size = 64
 mfI.subgroup = "MFFrame"
 mfI.order = "a"
@@ -18,9 +18,11 @@ mfR.name = "MachineFrame"
 mfR.energy_required = 1
 mfR.ingredients =
     {
-      {"DimensionalOre", 7}
+      {type="item", name="DimensionalOre", amount=7}
     }
-mfR.result = "MachineFrame"
+mfR.results = {
+  {type="item", name="MachineFrame", amount=1}
+}
 data:extend{mfR}
 
 
@@ -30,7 +32,7 @@ data:extend{mfR}
 local mf2I = {}
 mf2I.type = "item"
 mf2I.name = "MachineFrame2"
-mf2I.icon = "__MF_Base__/graphics/items/MachineFrame2.png"
+mf2I.icon = "__MF_Base_zoms__/graphics/items/MachineFrame2.png"
 mf2I.icon_size = 64
 mf2I.subgroup = "MFFrame"
 mf2I.order = "b"
@@ -45,10 +47,12 @@ mf2R.energy_required = 1.5
 mf2R.enabled = false
 mf2R.ingredients =
     {
-		{"MachineFrame", 2},
-		{"DimensionalPlate", 6}
+		{type="item", name="MachineFrame", amount=2},
+		{type="item", name="DimensionalPlate", amount=6}
     }
-mf2R.result = "MachineFrame2"
+mf2R.results = {
+  {type="item", name="MachineFrame2", amount=1}
+}
 data:extend{mf2R}
 
 
@@ -58,7 +62,7 @@ data:extend{mf2R}
 local mf3I = {}
 mf3I.type = "item"
 mf3I.name = "MachineFrame3"
-mf3I.icon = "__MF_Base__/graphics/items/MachineFrame3.png"
+mf3I.icon = "__MF_Base_zoms__/graphics/items/MachineFrame3.png"
 mf3I.icon_size = 64
 mf3I.subgroup = "MFFrame"
 mf3I.order = "c"
@@ -74,8 +78,10 @@ mf3R.enabled = false
 mf3R.category = "DimensionalCrystallizaton"
 mf3R.ingredients =
 {
-    {"MachineFrame2", 1},
-	  {"DimensionalCrystal", 1}
+    {type="item", name="MachineFrame2", amount=1},
+	  {type="item", name="DimensionalCrystal", amount=1}
 }
-mf3R.result = "MachineFrame3"
+mf3R.results = {
+  {type="item", name="MachineFrame3", amount=1}
+}
 data:extend{mf3R}

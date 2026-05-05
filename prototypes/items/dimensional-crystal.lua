@@ -4,7 +4,7 @@
 local dcI = {}
 dcI.type = "tool"
 dcI.name = "DimensionalCrystal"
-dcI.icon = "__MF_Base__/graphics/items/DimensionalCrystal.png"
+dcI.icon = "__MF_Base_zoms__/graphics/items/DimensionalCrystal.png"
 dcI.icon_size = 256
 dcI.subgroup = "MFIntermediate"
 dcI.durability = 1
@@ -24,14 +24,16 @@ dcR.ingredients =
     {
 		{type="fluid", name="DimensionalFluid", amount=300}
     }
-dcR.result = "DimensionalCrystal"
+dcR.results = {
+  {type="item", name="DimensionalCrystal", amount=1}
+}
 data:extend{dcR}
 
 -- Technologie --
 local dcT = {}
 dcT.name = "DimensionalCrystal"
 dcT.type = "technology"
-dcT.icon = "__MF_Base__/graphics/items/DimensionalCrystal.png"
+dcT.icon = "__MF_Base_zoms__/graphics/items/DimensionalCrystal.png"
 dcT.icon_size = 256
 dcT.unit = {
 	count=1300,

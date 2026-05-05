@@ -464,7 +464,7 @@ function GAPI.addItemFrame(GUITable, name, item, amount, gui, save)
     -- Create the Frame --
     local frame = GAPI.addFrame(name, gui, "horizontal")
     -- Create the Sprite --
-    GAPI.addSprite(item, frame, "item/" .. item, game.item_prototypes[item].localised_name)
+    GAPI.addSprite(item, frame, "item/" .. item, prototypes.item[item].localised_name)
     -- Create the amount Label --
     GAPI.addLabel("", frame, Util.toRNumber(amount))
     -- Save the Spite inside the elements Table --

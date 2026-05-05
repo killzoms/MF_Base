@@ -19,14 +19,14 @@ dmORs.minable =
 }
 dmORs.collision_box = {{ -0.1, -0.1}, {0.1, 0.1}}
 dmORs.selection_box = {{ -0.5, -0.5}, {0.5, 0.5}}
-dmORs.icon = "__MF_Base__/graphics/resources/DimensionalOreI.png"
+dmORs.icon = "__MF_Base_zoms__/graphics/resources/DimensionalOreI.png"
 dmORs.icon_size = 256
 dmORs.stage_counts = {1500, 1200, 700, 600, 300}
 dmORs.stages =
 {
 	sheet =
 	{
-		filename = "__MF_Base__/graphics/resources/DimensionalOre.png",
+		filename = "__MF_Base_zoms__/graphics/resources/DimensionalOre.png",
 		priority = "extra-high",	
 		size = 128,
 		frame_count = 3,
@@ -35,15 +35,19 @@ dmORs.stages =
 	}
 }
 dmORs.map_color = {102/255, 0, 102/255}
-dmORs.autoplace = resource_autoplace.resource_autoplace_settings{
-		name = "DimensionalOre",
+dmORs.autoplace = resource_autoplace.resource_autoplace_settings({
+		    name = "DimensionalOre",
         order = "b",
         base_density = 10,
         has_starting_area_placement = true,
         regular_rq_factor_multiplier = 1.10,
         starting_rq_factor_multiplier = 1.5
-    }
+    })
 data:extend{dmORs}
+
+-- Set Planetary Autoplace Control --
+data.raw.planet["nauvis"].map_gen_settings.autoplace_controls["DimensionalOre"] = {}
+data.raw.planet["nauvis"].map_gen_settings.autoplace_settings.entity.settings["DimensionalOre"] = {}
 
 -- Auto Place Control --
 local dmOAPC = {}
@@ -57,18 +61,12 @@ data:extend{dmOAPC}
 local dmOI = {}
 dmOI.name = "DimensionalOre"
 dmOI.type = "item"
-dmOI.icon = "__MF_Base__/graphics/items/DimensionalOre.png"
+dmOI.icon = "__MF_Base_zoms__/graphics/items/DimensionalOre.png"
 dmOI.icon_size = 64
 dmOI.subgroup = "MFResources"
 dmOI.order = "a"
 dmOI.stack_size = 1000
 data:extend{dmOI}
-
--- Noise Layer --
-local dmONL = {}
-dmONL.name = "DimensionalOre"
-dmONL.type = "noise-layer"
-data:extend{dmONL}
 
 -- Recipe --
 local dmOR = {}
@@ -77,17 +75,18 @@ dmOR.name = "DimensionalOre"
 dmOR.energy_required = 1
 dmOR.ingredients =
     {
-      {"DimensionalSample", 3}
+      {type="item", name="DimensionalSample", amount=3}
     }
-dmOR.result = "DimensionalOre"
-dmOR.result_count = 1
+dmOR.results = {
+  {type="item", name="DimensionalOre", amount=1}
+}
 data:extend{dmOR}
 
 -- Technology --
 local dmT = {}
 dmT.name = "DimensionalOre"
 dmT.type = "technology"
-dmT.icon = "__MF_Base__/graphics/technologies/DimensionalOre.png"
+dmT.icon = "__MF_Base_zoms__/graphics/technologies/DimensionalOre.png"
 dmT.icon_size = 256
 dmT.unit = {
 	count=100,
@@ -110,8 +109,9 @@ sR.enabled = false
 sR.energy_required = 0.3
 sR.ingredients =
     {
-      {"DimensionalOre", 1}
+      {type="item", name="DimensionalOre", amount=1}
     }
-sR.result = "stone"
-sR.result_count = 3
+sR.results = {
+  {type="item", name="stone", amount=3}
+}
 data:extend{sR}

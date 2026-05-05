@@ -4,7 +4,7 @@
 local cE = {}
 cE.type = "assembling-machine"
 cE.name = "Crystallizer"
-cE.icon = "__MF_Base__/graphics/items/Crystallizer.png"
+cE.icon = "__MF_Base_zoms__/graphics/items/Crystallizer.png"
 cE.icon_size = 32
 cE.flags = {"placeable-neutral", "placeable-player", "player-creation"}
 cE.minable = {mining_time = 0.2, result = "Crystallizer"}
@@ -25,30 +25,29 @@ cE.fluid_boxes =
         production_type = "input",
         pipe_picture = assembler2pipepictures(),
         pipe_covers = pipecoverspictures(),
-        base_area = 10,
-        base_level = -1,
-        pipe_connections = {{ type="input", position = {0, -2} }},
+        volume = 10,
+        pipe_connections = {{ flow_direction="input", position = {0, -1}, direction=defines.direction.north }},
         secondary_draw_orders = { north = -1 }
       },
       {
         production_type = "output",
         pipe_picture = assembler2pipepictures(),
         pipe_covers = pipecoverspictures(),
-        base_area = 10,
-        base_level = 1,
-        pipe_connections = {{ type="output", position = {0, 2} }},
+        volume = 10,
+        pipe_connections = {{ flow_direction="output", position = {0, 1}, direction=defines.direction.south }},
         secondary_draw_orders = { north = -1 }
       },
-      off_when_no_fluid_recipe = true
     }
+cE.fluid_boxes_off_when_no_fluid_recipe = true
 cE.collision_box = {{-1.2, -1.2}, {1.2, 1.2}}
 cE.selection_box = {{-1.5, -1.5}, {1.5, 1.5}}
-cE.animation =
+cE.graphics_set = {
+  animation =
     {
       layers =
       {
         {
-            filename = "__MF_Base__/graphics/entities/Crystallizer.png",
+            filename = "__MF_Base_zoms__/graphics/entities/Crystallizer.png",
             priority = "high",
             width = 214,
             height = 218,
@@ -58,7 +57,7 @@ cE.animation =
             scale = 0.5
         },
         {
-            filename = "__base__/graphics/entity/assembling-machine-2/hr-assembling-machine-2-shadow.png",
+            filename = "__base__/graphics/entity/assembling-machine-2/assembling-machine-2-shadow.png",
             priority = "high",
             width = 196,
             height = 163,
@@ -70,6 +69,7 @@ cE.animation =
         }
       }
     }
+  }
 cE.open_sound = { filename = "__base__/sound/machine-open.ogg", volume = 0.85 }
 cE.close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 }
 cE.vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 }
@@ -96,7 +96,7 @@ cE.energy_source =
     {
       type = "electric",
       usage_priority = "secondary-input",
-      emissions_per_minute = 3
+      emissions_per_minute = {pollution = 3}
     }
 cE.energy_usage = "800kW"
 cE.module_specification =
@@ -110,7 +110,7 @@ data:extend{cE}
 local cI = {}
 cI.type = "item"
 cI.name = "Crystallizer"
-cI.icon = "__MF_Base__/graphics/items/Crystallizer.png"
+cI.icon = "__MF_Base_zoms__/graphics/items/Crystallizer.png"
 cI.icon_size = 32
 cI.place_result = "Crystallizer"
 cI.subgroup = "MFStructure"
@@ -126,8 +126,10 @@ cR.energy_required = 5
 cR.enabled = false
 cR.ingredients =
     {
-      {"MachineFrame2", 8},
-      {"DimensionalCircuit", 35}
+      {type="item", name="MachineFrame2", amount=8},
+      {type="item", name="DimensionalCircuit", amount=35}
     }
-cR.result = "Crystallizer"
+cR.results = {
+  {type="item", name="Crystallizer", amount=1}
+}
 data:extend{cR}
