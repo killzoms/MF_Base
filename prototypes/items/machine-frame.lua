@@ -18,9 +18,11 @@ mfR.name = "MachineFrame"
 mfR.energy_required = 1
 mfR.ingredients =
     {
-      {"DimensionalOre", 7}
+      {type="item", name="DimensionalOre", amount=7}
     }
-mfR.result = "MachineFrame"
+mfR.results = {
+  {type="item", name="MachineFrame", amount=1}
+}
 data:extend{mfR}
 
 
@@ -45,10 +47,12 @@ mf2R.energy_required = 1.5
 mf2R.enabled = false
 mf2R.ingredients =
     {
-		{"MachineFrame", 2},
-		{"DimensionalPlate", 6}
+		{type="item", name="MachineFrame", amount=2},
+		{type="item", name="DimensionalPlate", amount=6}
     }
-mf2R.result = "MachineFrame2"
+mf2R.results = {
+  {type="item", name="MachineFrame2", amount=1}
+}
 data:extend{mf2R}
 
 
@@ -74,8 +78,10 @@ mf3R.enabled = false
 mf3R.category = "DimensionalCrystallizaton"
 mf3R.ingredients =
 {
-    {"MachineFrame2", 1},
-	  {"DimensionalCrystal", 1}
+    {type="item", name="MachineFrame2", amount=1},
+	  {type="item", name="DimensionalCrystal", amount=1}
 }
-mf3R.result = "MachineFrame3"
+mf3R.results = {
+  {type="item", name="MachineFrame3", amount=1}
+}
 data:extend{mf3R}

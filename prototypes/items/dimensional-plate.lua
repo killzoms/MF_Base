@@ -16,9 +16,10 @@ dpR.name = "DimensionalPlate"
 dpR.energy_required = 1
 dpR.category = "DimensionalSmelting"
 dpR.enabled = false
-dpR.ingredients =
-    {
-		{"DimensionalOre", 2}
-    }
-dpR.result = "DimensionalPlate"
+dpR.ingredients = {
+	{type="item", name="DimensionalOre", amount=2}
+}
+dpR.results = {
+  {type="item", name="DimensionalPlate", amount=1}
+}
 data:extend{dpR}

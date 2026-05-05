@@ -19,9 +19,11 @@ dwR.energy_required = 1
 dwR.enabled = false
 dwR.ingredients =
 {
-	{"DimensionalPlate", 1}
+	{type="item", name="DimensionalPlate", amount=1}
 }
-dwR.result = "DimensionalWire"
+dwR.results = {
+  {type="item", name="DimensionalWire", amount=1}
+}
 data:extend{dwR}
 
 
@@ -46,10 +48,12 @@ dcR.energy_required = 2
 dcR.enabled = false
 dcR.ingredients =
 {
-	{"DimensionalPlate", 1},
-	{"DimensionalWire", 3}
+	{type="item", name="DimensionalPlate", amount=1},
+	{type="item", name="DimensionalWire", amount=3}
 }
-dcR.result = "DimensionalCircuit"
+dcR.results = {
+  {type="item", name="DimensionalCircuit", amount=1}
+}
 data:extend{dcR}
 
 -- CRYSTALIZED CIRCUIT --
@@ -73,11 +77,12 @@ ccR.energy_required = 3
 ccR.enabled = false
 ccR.ingredients =
 {
-	{"DimensionalCircuit", 4},
-	{"DimensionalCrystal", 1}
+	{type="item", name="DimensionalCircuit", amount=4},
+	{type="item", name="DimensionalCrystal", amount=1}
 }
-ccR.result = "CrystalizedCircuit"
-ccR.result_count = 4
+ccR.results = {
+  {type="item", name="CrystalizedCircuit", amount=4}
+}
 data:extend{ccR}
 
 -- Technology --

@@ -3,6 +3,10 @@
 -- Prototype --
 local dlP = table.deepcopy(data.raw.lab.lab)
 dlP.name = "DimensionalLab"
+dlP.inputs = {
+        "DimensionalSample",
+        "DimensionalCrystal"
+    }
 dlP.minable = {mining_time = 0.2, result = "DimensionalLab"}
 dlP.order = "c"
 dlP.on_animation =
@@ -20,7 +24,7 @@ dlP.on_animation =
             scale = 0.5
         },
         {
-            filename = "__base__/graphics/entity/lab/hr-lab-integration.png",
+            filename = "__base__/graphics/entity/lab/lab-integration.png",
             width = 242,
             height = 162,
             frame_count = 1,
@@ -31,7 +35,7 @@ dlP.on_animation =
             scale = 0.5
         },
         {
-            filename = "__base__/graphics/entity/lab/hr-lab-shadow.png",
+            filename = "__base__/graphics/entity/lab/lab-shadow.png",
             width = 242,
             height = 136,
             frame_count = 1,
@@ -57,7 +61,7 @@ dlP.off_animation =
             scale = 0.5
         },
         {
-            filename = "__base__/graphics/entity/lab/hr-lab-integration.png",
+            filename = "__base__/graphics/entity/lab/lab-integration.png",
             width = 242,
             height = 162,
             frame_count = 1,
@@ -65,7 +69,7 @@ dlP.off_animation =
             scale = 0.5
         },
         {
-            filename = "__base__/graphics/entity/lab/hr-lab-shadow.png",
+            filename = "__base__/graphics/entity/lab/lab-shadow.png",
             width = 242,
             height = 136,
             frame_count = 1,
@@ -75,7 +79,6 @@ dlP.off_animation =
         }
       }
     }
-dlP.inputs = {"DimensionalSample", "DimensionalCrystal"}
 data:extend{dlP}
 
 -- Item --
@@ -97,7 +100,9 @@ dlR.name = "DimensionalLab"
 dlR.energy_required = 5
 dlR.ingredients =
     {
-      {"MachineFrame", 5},
+      {type="item", name="MachineFrame", amount=5},
     }
-dlR.result = "DimensionalLab"
+dlR.results = {
+  {type="item", name="DimensionalLab", amount=1}
+}
 data:extend{dlR}

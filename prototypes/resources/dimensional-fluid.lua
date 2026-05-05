@@ -9,6 +9,8 @@ dmFR.icon = "__MF_Base__/graphics/resources/DimensionalFluidI.png"
 dmFR.icon_size = 64
 dmFR.stages = table.deepcopy(data.raw.resource["crude-oil"].stages)
 dmFR.stages["sheet"]["filename"] = "__MF_Base__/graphics/resources/DimensionalFluid.png"
+dmFR.stages["sheet"]["width"] = 75
+dmFR.stages["sheet"]["height"] = 61
 dmFR.stage_counts = data.raw.resource["crude-oil"].stage_counts
 dmFR.map_color = {102/255, 0, 102/255}
 dmFR.category = "basic-fluid"
@@ -31,7 +33,7 @@ dmFR.minable = {
 	  }
 	}
 }
-dmFR.autoplace = resource_autoplace.resource_autoplace_settings{
+dmFR.autoplace = resource_autoplace.resource_autoplace_settings({
       name = "DimensionalFluid",
       order = "c",
       base_density = 8.2,
@@ -42,8 +44,12 @@ dmFR.autoplace = resource_autoplace.resource_autoplace_settings{
       additional_richness = 220000,
       has_starting_area_placement = true,
       regular_rq_factor_multiplier = 1
-    }
+    })
 data:extend{dmFR}
+
+-- Set Planetary Autoplace Control --
+data.raw.planet["nauvis"].map_gen_settings.autoplace_controls["DimensionalFluid"] = {}
+data.raw.planet["nauvis"].map_gen_settings.autoplace_settings.entity.settings["DimensionalFluid"] = {}
 
 local dmFF = {}
 dmFF.name = "DimensionalFluid"
@@ -64,11 +70,6 @@ dmFAPC.category = "resource"
 dmFAPC.name = "DimensionalFluid"
 dmFAPC.richness = true
 data:extend{dmFAPC}
-
-local dmFNL = {}
-dmFNL.name = "DimensionalFluid"
-dmFNL.type = "noise-layer"
-data:extend{dmFNL}
 
 -- Dimensional Fluid to Water --
 local wR = {}

@@ -20,8 +20,9 @@ dsR.name = "DimensionalSample"
 dsR.energy_required = 1
 dsR.ingredients =
     {
-      {"DimensionalOre", 1}
+      {type="item", name="DimensionalOre", amount=1}
     }
-dsR.result = "DimensionalSample"
-dsR.result_count = 3
+dsR.results = {
+  {type="item", name="DimensionalSample", amount=3}
+}
 data:extend{dsR}

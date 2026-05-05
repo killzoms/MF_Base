@@ -17,7 +17,7 @@ end
 -- Used to do a protected Function call --
 function mfCall(fName, ...)
 	-- Dont use pcall() if the game is in Instrument mode --
-	if game.active_mods["debugadapter"] then
+	if script.active_mods["debugadapter"] then
 		fName(...)
 		return
 	end
@@ -73,29 +73,29 @@ end
 
 -- Return the localised Entity Name --
 function Util.getLocEntityName(entName)
-	if game.entity_prototypes[entName] ~= nil then
-		return game.entity_prototypes[entName].localised_name
+	if prototypes.entity[entName] ~= nil then
+		return prototypes.entity[entName].localised_name
 	end
 end
 
 -- Return the localised Item Name --
 function Util.getLocItemName(itemName)
-	if game.item_prototypes[itemName] ~= nil then
-		return game.item_prototypes[itemName].localised_name
+	if prototypes.item[itemName] ~= nil then
+		return prototypes.item[itemName].localised_name
 	end
 end
 
 -- Return the localised Fluid Name --
 function Util.getLocFluidName(fluidName)
-	if game.fluid_prototypes[fluidName] ~= nil then
-		return game.fluid_prototypes[fluidName].localised_name
+	if prototypes.fluid[fluidName] ~= nil then
+		return prototypes.fluid[fluidName].localised_name
 	end
 end
 
 -- Return the localised Recipe Name --
 function Util.getLocRecipeName(recipeName)
-	if game.recipe_prototypes[recipeName] ~= nil then
-		return game.recipe_prototypes[recipeName].localised_name
+	if prototypes.recipe[recipeName] ~= nil then
+		return prototypes.recipe[recipeName].localised_name
 	end
 end
 
@@ -225,49 +225,4 @@ function Util.copyTable(t1)
 		t2[k] = j
 	end
 	return t2
-end
-
--- Synchronize the Fluid between two Pipes --
-function Util.syncPipes(outPipe, inPipe, way)
-
-	if way == "input" then
-
-		-- Check the Fluidbox --
-		if outPipe.fluidbox == nil or outPipe.fluidbox[1] == nil then return end
-
-		-- Get the Fluid inside the outPipe --
-		local FName = outPipe.fluidbox[1].name
-		local fAmount = outPipe.fluidbox[1].amount
-		local fTemp = outPipe.fluidbox[1].temperature
-
-		-- Insert the Fluid inside the inPipe --
-		local inserted = inPipe.insert_fluid({name=FName, amount=fAmount, temperature=fTemp})
-
-		-- Remove the Fluid from the outPipe --
-		outPipe.remove_fluid{name=FName, amount=inserted}
-
-		return
-
-	end
-
-	if way == "output" then
-
-		-- Check the Fluidbox --
-		if inPipe.fluidbox == nil or inPipe.fluidbox[1] == nil then return end
-
-		-- Get the Fluid inside the inPipe --
-		local FName = inPipe.fluidbox[1].name
-		local fAmount = inPipe.fluidbox[1].amount
-		local fTemp = inPipe.fluidbox[1].temperature
-
-		-- Insert the Fluid inside the outPipe --
-		local inserted = outPipe.insert_fluid({name=FName, amount=fAmount, temperature=fTemp})
-
-		-- Remove the Fluid from the inPipe --
-		inPipe.remove_fluid{name=FName, amount=inserted}
-
-		return
-
-	end
-
 end

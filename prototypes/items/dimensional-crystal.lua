@@ -24,7 +24,9 @@ dcR.ingredients =
     {
 		{type="fluid", name="DimensionalFluid", amount=300}
     }
-dcR.result = "DimensionalCrystal"
+dcR.results = {
+  {type="item", name="DimensionalCrystal", amount=1}
+}
 data:extend{dcR}
 
 -- Technologie --
