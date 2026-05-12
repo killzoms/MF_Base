@@ -315,17 +315,19 @@ function GAPI.addTextBox(GUITable, name, gui, text, tooltip, save)
 end
 
 -- Add a new Button --
-function GAPI.addButton(GUITable, name, gui, sprite, hovSprite, tooltip, size, save, visible, count, style, tags)
+function GAPI.addButton(GUITable, name, gui, sprite, hovSprite, tooltip, size, save, visible, count, style, tags, quality)
     if visible == false then return end
     -- Check if this Element doesn't exist --
     if name ~= nil and name ~= "" and gui[name] ~= nil then gui[name].destroy() end
+    if quality == nil then quality = "normal" end
     -- Create the Button --
     local button = gui.add{
 		type="sprite-button",
 		name=name,
 		sprite=sprite,
 		hovered_sprite=hovSprite,
-		resize_to_sprite=false,
+        resize_to_sprite=false,
+        quality=quality,
         tooltip=tooltip,
         number=count,
         tags=tags

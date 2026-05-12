@@ -80,8 +80,12 @@ end
 
 -- Return the localised Item Name --
 function Util.getLocItemName(itemName)
-	if prototypes.item[itemName] ~= nil then
-		return prototypes.item[itemName].localised_name
+	local name = itemName
+	if (type(itemName) == "table") then
+		name = itemName.name
+	end
+	if prototypes.item[name] ~= nil then
+		return prototypes.item[name].localised_name
 	end
 end
 
@@ -100,10 +104,10 @@ function Util.getLocRecipeName(recipeName)
 end
 
 -- Reset an Animation --
-function Util.resetAnimation(animId, totalFrame)
-	local animSpeed = rendering.get_animation_speed(animId)
+function Util.resetAnimation(anim, totalFrame)
+	local animSpeed = anim.animation_speed
 	local currentFrame = math.floor((game.tick * animSpeed) % totalFrame)
-	rendering.set_animation_offset(animId, 0 - currentFrame)
+	anim.animation_offset = 0 - currentFrame
 end
 
 -- Unlock a recipe for all Players --

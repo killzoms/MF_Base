@@ -1,0 +1,17 @@
+{
+    "tasks": [
+        {
+            "label": "Package Mod",
+            "type": "shell",
+            "command": "${workspaceFolder}/package.sh",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        }
+    ] 
+}
